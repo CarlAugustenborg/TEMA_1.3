@@ -1,64 +1,189 @@
 @charset "utf-8";
 /* CSS Document */
 
+body{
+	background-color: #E9FFED;
+}
 .wrapper {
 	max-width: 1024px;
 	margin: 0 auto;
 	font: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
 }
 .wrapper {
-  display: grid;
-  grid-template-columns: repeat(12, [col-start] 1fr);
-  grid-gap: 20px;
+	display: grid;
+	grid-template-columns: auto auto auto auto;
 }
 .wrapper > * {
-	border:2px solid #f08c00;
-	background-color: #ffec99;
+	background-color: #E9FFED;
 	border-radius: 5px;
-	padding: 10px;
+	padding: 20px;
 }
-.wrapper > * {
-  grid-column: col-start / span 12;
+@media (max-width: 500px) {
+	
+	
+	/* --------NAV-BURGER----------------*/
+	nav {
+		grid-column: 1/5;
+		grid-row: 1;
+	}
+	a {
+		text-decoration: none;
+		color: #1F9262;
+		transition: color 0.3s ease;
+	}
+	a:hover {
+		color: tomato;
+	}
+	#menuToggle {
+		display: block;
+		position: relative;
+		top: 8px;
+		left: 5px;
+		z-index: 1;
+		-webkit-user-select: none;
+		user-select: none;
+	}
+	#menuToggle input {
+		display: block;
+		width: 40px;
+		height: 32px;
+		position: absolute;
+		top: -7px;
+		left: -5px;
+		cursor: pointer;
+		opacity: 0; /* hide this */
+		z-index: 2; /* and place it over the hamburger */
+		-webkit-touch-callout: none;
+	}
+	/*
+ * Just a quick hamburger
+ */
+	#menuToggle span {
+		display: block;
+		width: 33px;
+		height: 4px;
+		margin-bottom: 5px;
+		position: relative;
+		background: #1F9262;
+		border-radius: 3px;
+		z-index: 1;
+		transform-origin: 4px 0px;
+		transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
+	}
+	#menuToggle span:first-child {
+		transform-origin: 0% 0%;
+	}
+	#menuToggle span:nth-last-child(2) {
+		transform-origin: 0% 100%;
+	}
+	/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+	#menuToggle input:checked ~ span {
+		opacity: 1;
+		transform: rotate(45deg) translate(-2px, -1px);
+		background: #232323;
+	}
+	/*
+ * But let's hide the middle one.
+ */
+	#menuToggle input:checked ~ span:nth-last-child(3) {
+		opacity: 0;
+		transform: rotate(0deg) scale(0.2, 0.2);
+	}
+	/*
+ * Ohyeah and the last one should go the other direction
+ */
+	#menuToggle input:checked ~ span:nth-last-child(2) {
+		transform: rotate(-45deg) translate(0, -1px);
+	}
+	/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+	#menu {
+		position: absolute;
+		width: 300px;
+		margin: -100px 0 0 -50px;
+		padding: 50px;
+		padding-top: 125px;
+		background: #E9FFED;
+		list-style-type: none;
+		-webkit-font-smoothing: antialiased;
+		/* to stop flickering of text in safari */
+		transform-origin: 0% 0%;
+		transform: translate(-100%, 0);
+		transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+	}
+	#menu li {
+		padding: 10px 0;
+		font-size: 22px;
+	}
+	/*
+ * And let's slide it in from the left
+ */
+	#menuToggle input:checked ~ ul {
+		transform: none;
+	}
+	
+/*-----------------------HEADER/LOGO--------------------------------*/
+	
+	header {
+		grid-column: 1/5;
+	}
+	.logo {
+		display: block;
+		margin: auto;
+	}
+	
+	
+/*----------------------MAIN--------------------------------------*/	
+	
+	main{
+		grid-column: 1/5;
+	}
+	
+	.image{
+		width: 100%;
+	}
+	
+/*----------------------FOOTER--------------------------------------*/	
+	
+	footer{
+		grid-column: 1/5;
+		border-top: solid 2px #1F9262;
+	}
+	
+	.fab{
+		font-size: 1.6em;
+	}
 }
-@media (min-width: 500px) {
 
-  .side {
-    grid-column: col-start / span 3;
-    grid-row: 3;
-  }
-  .ad {
-    grid-column: col-start / span 3;
-    grid-row: 4;
-  }
-  .content, .main-footer {
-    grid-column: col-start 4 / span 9;
-  }
-  nav ul {
-    display: flex;
-    justify-content: space-between;
-  }
-}
+
+
+
 @media (min-width: 700px) {
-  .main-nav {
-    grid-column: col-start / span 2;
-    grid-row: 2 / 4;
-  }
-  .content {
-    grid-column: col-start 3 / span 8;
-    grid-row: 2 / 4;
-  }
-  .side {
-    grid-column: col-start 11 / span 2;
-    grid-row: 2;
-  }
-  .ad {
-    grid-column: col-start 11 / span 2;
-    grid-row: 3;
-  }
-  .main-footer {
-    grid-column: col-start / span 12;
-  }
-  nav ul {
-    flex-direction: column;
-  }
+	.main-nav {
+		grid-column: col-start / span 2;
+		grid-row: 2 / 4;
+	}
+	.content {
+		grid-column: col-start 3 / span 8;
+		grid-row: 2 / 4;
+	}
+	.side {
+		grid-column: col-start 11 / span 2;
+		grid-row: 2;
+	}
+	.ad {
+		grid-column: col-start 11 / span 2;
+		grid-row: 3;
+	}
+	.main-footer {
+		grid-column: col-start / span 12;
+	}
+	nav ul {
+		flex-direction: column;
+	}
 }
