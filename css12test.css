@@ -203,6 +203,11 @@ body{
 		font-style: oblique;
 	}
 
+/*--------------------------------PRAKTISK/Sofia-------------------------------------*/
+
+.praktiskh1{
+	color: #1F9262;
+}
 
 
 @media (min-width: 700px) {
